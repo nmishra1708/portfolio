@@ -1,6 +1,6 @@
 const profile = {
   name: "Nitin Mishra",
-  role: "Senior Full-Stack & AI Systems Engineer",
+  role: "Senior Full-Stack & AI/LLM Software Engineer",
   email: "nmishra1708@gmail.com",
   phone: "+91-9893073598",
   linkedin: "https://www.linkedin.com/in/nmishra1708/",

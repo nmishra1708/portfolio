@@ -16,8 +16,8 @@ function ArrowIcon({ diagonal = false }) {
 
 function Mark() {
   return (
-    <a className="brand" href="#home" aria-label="Back to top">
-      <span className="brand-mark">N<span>M</span></span>
+    <a className="brand" href="#home" aria-label="Nitin Mishra — back to top">
+      <img className="brand-photo" src="/uploads/nitin-mishra-portrait.png" alt="" width="40" height="40" />
       <span className="brand-name">NITIN MISHRA <span>ENGINEER</span></span>
     </a>
   );
@@ -65,9 +65,10 @@ function Hero({ profile }) {
   return (
     <section className="hero shell" id="home" aria-labelledby="hero-title">
       <div className="hero-copy">
-        <div className="hero-kicker"><span className="availability-dot" /> SENIOR FULL-STACK & AI ENGINEER <span className="kicker-divider">/</span> INDIA</div>
+        <div className="hero-kicker"><span className="availability-dot" /> AVAILABLE IMMEDIATELY <span className="kicker-divider">/</span> INDIA</div>
         <p className="eyebrow">PRODUCT ENGINEERING · APPLIED AI · SYSTEMS</p>
-        <h1 id="hero-title">Building products <span>that make a difference.</span></h1>
+        <h1 id="hero-title">Senior Full-Stack<br /><span>&amp; AI/LLM Software Engineer</span></h1>
+        <p className="hero-tagline">{profile.tagline}</p>
         <p className="hero-description">
           I turn complex challenges into production-ready software—from high-scale platforms to AI systems that deliver measurable impact.
         </p>
@@ -363,25 +364,74 @@ function Experience({ roles, resumeUrl }) {
 }
 
 function Contact({ profile }) {
+  const [formStatus, setFormStatus] = useState("");
+  const [emailDraftUrl, setEmailDraftUrl] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const subject = String(formData.get("subject") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+    const body = `Hi Nitin,\n\n${message}\n\nFrom: ${name}\nEmail: ${email}`;
+    const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setEmailDraftUrl(mailto);
+    setFormStatus("Your email draft is ready. Review it in your email app, then press Send.");
+  }
+
   return (
     <section className="contact-section" id="contact">
       <div className="shell contact-inner">
         <p className="eyebrow">THE NEXT GOOD THING STARTS HERE</p>
-        <h2>Have a big idea?<br /><span>Let&apos;s build it.</span></h2>
+        <h2>Let&apos;s build<br /><span>something great.</span></h2>
         <p className="contact-copy">
-          Open to senior MERN, Python, Node.js lead, and full-stack AI opportunities.
+          Have a role, a product idea, or a tricky engineering problem in mind? Tell me a little about it.
         </p>
-        <div className="contact-actions">
-          <a className="button button-primary" href={`mailto:${profile.email}`}>Email me <ArrowIcon diagonal /></a>
-          <a className="button button-quiet" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowIcon diagonal /></a>
-          <a className="button button-quiet" href={profile.github} target="_blank" rel="noreferrer">GitHub <ArrowIcon diagonal /></a>
-          <a className="button button-quiet" href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`}>Call {profile.phone}</a>
+        <div className="contact-layout">
+          <div className="contact-info">
+            <div className="contact-actions">
+              <a className="button button-primary" href={`mailto:${profile.email}`}>Email me <ArrowIcon diagonal /></a>
+              <a className="button button-quiet" href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowIcon diagonal /></a>
+              <a className="button button-quiet" href={profile.github} target="_blank" rel="noreferrer">GitHub <ArrowIcon diagonal /></a>
+              <a className="button button-quiet" href={`tel:${profile.phone.replace(/[^\d+]/g, "")}`}>Call {profile.phone}</a>
+            </div>
+            <div className="contact-footnote">
+              <span className="button contact-status"><span className="availability-dot" />{profile.availability}</span>
+              <span className="contact-preference">{profile.workPreference}</span>
+            </div>
+            <a className="contact-email" href={`mailto:${profile.email}`}>{profile.email}</a>
+          </div>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="form-fields">
+              <label className="form-field">
+                <span>Your name</span>
+                <input autoComplete="name" maxLength="100" name="name" placeholder="Jane Smith" required />
+              </label>
+              <label className="form-field">
+                <span>Email address</span>
+                <input autoComplete="email" maxLength="254" name="email" placeholder="jane@company.com" required type="email" />
+              </label>
+              <label className="form-field form-field-wide">
+                <span>Subject</span>
+                <input maxLength="150" name="subject" placeholder="Let's talk about..." required />
+              </label>
+              <label className="form-field form-field-wide">
+                <span>Message</span>
+                <textarea maxLength="5000" minLength="10" name="message" placeholder="Tell me a little about what you're building or the role you're hiring for..." required rows="5" />
+              </label>
+            </div>
+            <div className="form-submit-row">
+              <button className="button button-primary" type="submit">Prepare email draft <ArrowIcon /></button>
+              <span>No message is sent without your confirmation.</span>
+            </div>
+            <p className="form-status" aria-live="polite" role="status">
+              {formStatus}
+              {emailDraftUrl && <a href={emailDraftUrl}>Open email draft <ArrowIcon diagonal /></a>}
+            </p>
+          </form>
         </div>
-        <div className="contact-footnote">
-          <span className="button contact-status"><span className="availability-dot" />{profile.availability}</span>
-          <span className="contact-preference">{profile.workPreference}</span>
-        </div>
-        <p className="contact-note">Happy to discuss a role, a product idea, or an engineering challenge.</p>
       </div>
     </section>
   );

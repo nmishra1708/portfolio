@@ -2,7 +2,7 @@
 
 A React and Vite portfolio backed by a Node.js and Express API. The API supplies the profile and project data; the browser provides project filtering and search.
 The resume and photos are stored in `client/uploads` and served by the API at `/uploads`. Vite proxies `/uploads` to the Express API during local development; on Vercel, the upload serverless function serves the same files.
-The portfolio includes a photo-led introduction, measurable outcomes, selected projects, career history, interactive engineering-stack categories, and direct contact links.
+The portfolio includes a photo-led introduction, measurable outcomes, selected projects, career history, interactive engineering-stack categories, a contact form that opens a pre-filled email in the visitor's email app, and direct contact links.
 
 ## Requirements
 

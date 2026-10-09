@@ -1,7 +1,7 @@
 # Full-Stack & AI Systems Engineer Portfolio
 
 A React and Vite portfolio backed by a Node.js and Express API. The API supplies the profile and project data; the browser provides project filtering and search.
-The resume and photos are stored in `client/uploads` and served by the API at `/uploads`. Vite proxies `/uploads` to the Express API during local development; on Vercel, the upload serverless function serves the same files.
+The resume and photos are stored in `client/uploads`. Vite includes them in the production build under `dist/uploads` so Vercel serves them directly as static assets. During local development, Vite proxies `/uploads` to the Express API.
 The portfolio includes a photo-led introduction, measurable outcomes, selected projects, career history, interactive engineering-stack categories, a contact form that opens a pre-filled email in the visitor's email app, and direct contact links.
 
 ## Requirements
@@ -24,7 +24,7 @@ Create an optimized frontend build with `npm run build`. Run the API independent
 
 ## Deploy to Vercel
 
-Import the repository into Vercel and set the **Root Directory** to `client`. The checked-in `client/vercel.json` builds the React app into `client/dist`, deploys the `client/api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `client/uploads`.
+Import the repository into Vercel and set the **Root Directory** to `client`. The checked-in `client/vercel.json` builds the React app into `dist` and deploys the `client/api/` serverless functions. The Vite build also copies the resume and photos from `client/uploads` into `dist/uploads` for direct static-file serving.
 
 After deploying, the API endpoint is `https://<your-deployment>.vercel.app/api/portfolio` (note the final `o` in `portfolio`); the health endpoint is `/api/health`. No separate Express server or `VITE_API_URL` is needed when frontend and API are deployed to this same Vercel domain.
 

@@ -22,7 +22,14 @@ Open the local URL printed by Vite. The Vite development server proxies `/api` r
 
 Create an optimized frontend build with `npm run build`. Run the API independently in production with `npm start`. Set `PORT` to change the API port; set `VITE_API_URL` when the frontend needs to call an API hosted on a different origin.
 
+## Deploy to Vercel
+
+Import the repository into Vercel with the **repository root** as the Root Directory. The checked-in `vercel.json` builds the React app to `client/dist`, deploys the `api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `server/uploads`.
+
+After deploying, the API endpoint is `https://<your-deployment>.vercel.app/api/portfolio` (note the final `o` in `portfolio`); the health endpoint is `/api/health`. No separate Express server or `VITE_API_URL` is needed when frontend and API are deployed to this same Vercel domain.
+
 ## API
 
 - `GET /api/health` — service health check
 - `GET /api/portfolio` — profile and project data for the portfolio
+- `GET /uploads/<filename>` — resume PDF and portfolio images

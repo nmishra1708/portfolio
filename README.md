@@ -1,7 +1,7 @@
 # Full-Stack & AI Systems Engineer Portfolio
 
 A React and Vite portfolio backed by a Node.js and Express API. The API supplies the profile and project data; the browser provides project filtering and search.
-The resume and photos are stored in `server/uploads` and served by Express at `/uploads`. Vite proxies `/uploads` to the API during local development, and the frontend uses `VITE_API_URL` for assets when the API is hosted on a separate origin.
+The resume and photos are stored in `client/uploads` and served by the API at `/uploads`. Vite proxies `/uploads` to the Express API during local development; on Vercel, the upload serverless function serves the same files.
 The portfolio includes a photo-led introduction, measurable outcomes, selected projects, career history, interactive engineering-stack categories, and direct contact links.
 
 ## Requirements
@@ -24,24 +24,24 @@ Create an optimized frontend build with `npm run build`. Run the API independent
 
 ## Deploy to Vercel
 
-Import the repository into Vercel with the **repository root** as the Root Directory (do not select `client`). The checked-in `vercel.json` builds the React app into the root `dist` directory, deploys the `api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `server/uploads`.
+Import the repository into Vercel and set the **Root Directory** to `client`. The checked-in `client/vercel.json` builds the React app into `client/dist`, deploys the `client/api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `client/uploads`.
 
 After deploying, the API endpoint is `https://<your-deployment>.vercel.app/api/portfolio` (note the final `o` in `portfolio`); the health endpoint is `/api/health`. No separate Express server or `VITE_API_URL` is needed when frontend and API are deployed to this same Vercel domain.
 
-### Fix: "No Output Directory named dist found"
+### Vercel project settings
 
-In Vercel **Project Settings → Build and Deployment**, configure:
+In Vercel **Project Settings → Build and Deployment**, configure these values to match the `client` Root Directory:
 
-- **Root Directory:** repository root (`.`); leave **Include files outside the Root Directory** disabled.
-- **Framework Preset:** Vite, or Other if you want to use the checked-in build settings directly.
-- **Build Command:** `npm run build:vercel`
+- **Root Directory:** `client`
+- **Framework Preset:** Vite
+- **Build Command:** `npm run build`
 - **Output Directory:** `dist`
 - **Install Command:** `npm install`
 
-The Vercel-specific build script writes the frontend into the root `dist` directory, matching Vercel's Output Directory setting. Do not set the Root Directory to `client`: Vercel would not include the root-level `api/` functions or `vercel.json`. If Vercel Project Settings override the build command or output directory, change them to `npm run build:vercel` and `dist`, or disable the overrides so Vercel can use `vercel.json`. Verify that the latest deployment's Git commit contains the root-level `vercel.json`, then redeploy.
+The `client` directory is self-contained for Vercel: its package scripts, `vercel.json`, API functions, shared portfolio data, and uploads all live under the configured Root Directory. This avoids the missing workspace script and missing output-directory errors when Vercel builds from `/vercel/path0/client`. If the project was previously configured with a different Root Directory, update it to `client`, ensure the build settings above are used, and redeploy a commit containing `client/vercel.json`.
 
 ## API
 
-- `GET /api/health` — service health check
-- `GET /api/portfolio` — profile and project data for the portfolio
+- `GET /api/health` — service health check (Vercel function: `client/api/health.js`)
+- `GET /api/portfolio` — profile and project data (Vercel function: `client/api/portfolio.js`)
 - `GET /uploads/<filename>` — resume PDF and portfolio images

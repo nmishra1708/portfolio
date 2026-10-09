@@ -1,10 +1,10 @@
 const express = require("express");
 const path = require("node:path");
-const { profile, projects } = require("./data");
+const { profile, projects } = require("../../client/api/data.cjs");
 
 const app = express();
 const port = Number(process.env.PORT) || 4000;
-const uploadsPath = path.join(__dirname, "..", "uploads");
+const uploadsPath = path.join(__dirname, "..", "..", "client", "uploads");
 
 app.disable("x-powered-by");
 app.use(express.json({ limit: "32kb" }));

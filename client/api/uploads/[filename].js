@@ -1,5 +1,5 @@
-const path = require("node:path");
-const { readFile } = require("node:fs/promises");
+import path from "node:path";
+import { readFile } from "node:fs/promises";
 
 const contentTypes = {
   "Nitin_Mishra_AI_LLM_Resume_V1.0.pdf": "application/pdf",
@@ -7,7 +7,7 @@ const contentTypes = {
   "performance-of-the-year-award.jpg": "image/jpeg",
 };
 
-module.exports = async function uploadHandler(request, response) {
+export default async function uploadHandler(request, response) {
   if (request.method !== "GET" && request.method !== "HEAD") {
     response.setHeader("Allow", "GET, HEAD");
     return response.status(405).json({ error: "Method not allowed." });
@@ -20,7 +20,7 @@ module.exports = async function uploadHandler(request, response) {
     return response.status(404).json({ error: "Upload not found." });
   }
 
-  const filePath = path.join(process.cwd(), "server", "uploads", filename);
+  const filePath = path.join(process.cwd(), "uploads", filename);
 
   try {
     const file = await readFile(filePath);
@@ -32,4 +32,4 @@ module.exports = async function uploadHandler(request, response) {
     console.error(`Unable to read portfolio upload "${filename}":`, error);
     return response.status(500).json({ error: "Unable to serve upload." });
   }
-};
+}

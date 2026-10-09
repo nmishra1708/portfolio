@@ -36,10 +36,12 @@ const profile = {
     "React",
     "Node.js",
     "Express",
+    "JavaScript",
     "TypeScript",
     "Python",
     "MongoDB",
     "PostgreSQL",
+    "Dynamodb",
     "AWS",
     "Kafka",
     "GraphQL",
@@ -47,6 +49,9 @@ const profile = {
     "Roboflow",
     "Textract",
     "LLMs",
+    "RAG",
+    "LangChain",
+    "MCP"
   ],
   aiTools: ["Cursor", "GitHub Copilot", "Claude API"],
   stackGroups: [
@@ -153,7 +158,7 @@ const projects = [
     id: "document-validation-summarization",
     name: "Document Validation & Summarization Platform",
     year: "2022–2024",
-    client: "US-based compliance clients",
+    client: "US-based compliance Syndicate",
     domain: "Document intelligence & compliance",
     category: "AI & Computer Vision",
     summary:
@@ -176,7 +181,7 @@ const projects = [
     id: "fintech-data-quality",
     name: "Fintech Data Quality & Reconciliation Framework",
     year: "2021–2022",
-    client: "Enterprise fintech clients",
+    client: "US Based Financial Institution",
     domain: "Fintech & data quality",
     category: "Fintech & Compliance",
     summary:
@@ -199,7 +204,7 @@ const projects = [
     id: "hrms",
     name: "HRMS",
     year: "2021–2026",
-    client: "Vidyam · Own product",
+    client: "Company Product · Human resources",
     domain: "Enterprise software",
     category: "Enterprise",
     summary:
@@ -209,9 +214,9 @@ const projects = [
   },
   {
     id: "vms",
-    name: "VMS",
+    name: "Enterprise Operations Platform",
     year: "2021–2022",
-    client: "VMS Limited · Manufacturing",
+    client: "Manufacturing enterprise clients",
     domain: "Enterprise software",
     category: "Enterprise",
     summary:
@@ -221,9 +226,9 @@ const projects = [
   },
   {
     id: "certifyme",
-    name: "CertifyMe",
+    name: "Tenant Compliance Platform",
     year: "2021–2026",
-    client: "Preferred Compliance",
+    client: "US-based compliance Syndicate",
     domain: "Compliance & real estate",
     category: "Fintech & Compliance",
     summary:
@@ -248,7 +253,7 @@ const projects = [
     id: "rule-engine",
     name: "Rule Engine",
     year: "2022–2023",
-    client: "Bank of America",
+    client: "US Based Financial Institution",
     domain: "Financial technology",
     category: "Fintech & Compliance",
     summary:
@@ -273,7 +278,7 @@ const projects = [
     id: "pc-gen-ai",
     name: "PC Gen AI",
     year: "2024–2026",
-    client: "Preferred Compliance",
+    client: "US-based compliance Syndicate",
     domain: "Fintech & applied AI",
     category: "AI & Computer Vision",
     summary:
@@ -295,7 +300,7 @@ const projects = [
   },
   {
     id: "piemind",
-    name: "Piemind / Vidyam",
+    name: "Surveillance & Monitoring Product for Manufacturing",
     year: "2025–2026",
     client: "Manufacturing companies",
     domain: "Surveillance & monitoring",
@@ -333,7 +338,7 @@ const projects = [
     id: "elevator-booking",
     name: "Elevator Booking",
     year: "2023",
-    client: "KONI Elevator Manufacturing Company",
+    client: "Top Elevator Manufacturing Company",
     domain: "Industrial monitoring",
     category: "Robotics",
     summary:
@@ -357,7 +362,7 @@ const projects = [
     id: "accounting-desktop",
     name: "Accounting Desktop App",
     year: "2023–2024",
-    client: "Chartered accountant · Indore",
+    client: "Chartered accountant Firm",
     domain: "Accounting & compliance",
     category: "Enterprise",
     summary:
@@ -369,7 +374,7 @@ const projects = [
     id: "ai-npr",
     name: "AI NPR",
     year: "2024–2025",
-    client: "Himachal Highway Toll Authority",
+    client: "Toll Authority",
     domain: "Transportation & computer vision",
     category: "AI & Computer Vision",
     summary:
@@ -380,8 +385,8 @@ const projects = [
   {
     id: "botriq",
     name: "Botriq",
-    year: "Project delivery",
-    client: "Botriq Pvt. Ltd.",
+    year: "20205–2026",
+    client: "Company Product · Robotics",
     domain: "Robotics",
     category: "Robotics",
     summary:
@@ -392,8 +397,8 @@ const projects = [
   {
     id: "bt-subscription",
     name: "Subscription Portal",
-    year: "Project delivery",
-    client: "BT",
+    year: "2024-2025",
+    client: "US-based networking services provider",
     domain: "Networking",
     category: "Enterprise",
     summary:

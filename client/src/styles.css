@@ -36,8 +36,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .brand { display: inline-flex; align-items: center; gap: 10px; width: fit-content; }
 .brand-mark { font: 800 26px/.85 var(--display); letter-spacing: -3px; }
 .brand-mark span { color: #75b837; }
-.brand-name { display: flex; flex-direction: column; gap: 3px; font: 600 9px/1.1 var(--mono); letter-spacing: 1.2px; }
-.brand-name span { color: #7b857f; font-size: 8px; }
+.brand-name { display: flex; flex-direction: column; gap: 2px; font: 900 16px/1.1 var(--mono); letter-spacing: 1px; }
+.brand-name span { color: #7b857f; font-size: 12px; }
 .nav-links { display: flex; align-items: center; gap: 29px; color: #53605a; font-size: 12px; }
 .nav-links > a:not(.nav-cta) { transition: color .2s; }
 .nav-links > a:not(.nav-cta):hover { color: #5a9a26; }
@@ -353,9 +353,9 @@ a.project-link:hover { border-color: #b9d89c; color: #4f8728; background: #f3f9e
 body { color: var(--ink); background: var(--bg); }
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline-color: var(--accent); }
 .brand { gap: 11px; }
-.brand-photo { width: 39px; height: 39px; flex: 0 0 39px; display: block; border: 1px solid rgba(193, 242, 124, .55); border-radius: 50%; object-fit: cover; object-position: center 36%; background: #202820; box-shadow: 0 0 0 3px rgba(193, 242, 124, .08); }
-.brand-name { color: #f2f5ef; font-size: 16px; letter-spacing: 1.25px; }
-.brand-name > span { font-size: 10px; }
+.brand-photo { width: 49px; height: 49px; flex: 0 0 39px; display: block; border: 1px solid rgba(193, 242, 124, .55); border-radius: 50%; object-fit: cover; object-position: center 36%; background: #202820; box-shadow: 0 0 0 3px rgba(193, 242, 124, .08); }
+.brand-name { color: #fefffd; font-size: 24px; font-weight: 900; letter-spacing: .50px; }
+.brand-name > span { font-size: 12px; }
 .brand-name span { color: #a8b2aa; }
 .site-header { border-color: rgba(230, 241, 232, .09); background: rgba(10, 13, 11, .9); }
 .nav-links { color: #c2cbc4; }

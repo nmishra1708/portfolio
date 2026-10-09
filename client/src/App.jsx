@@ -18,7 +18,7 @@ function Mark() {
   return (
     <a className="brand" href="#home" aria-label="Nitin Mishra — back to top">
       <img className="brand-photo" src="/uploads/nitin-mishra-portrait.png" alt="" width="40" height="40" />
-      <span className="brand-name">NITIN MISHRA <span>ENGINEER</span></span>
+      <span className="brand-name" > NITIN MISHRA <span>TECHNICAL COUNSULTANT (FULL-STACK & AI/LLM)</span></span>
     </a>
   );
 }
@@ -139,8 +139,8 @@ function About({ profile }) {
             <img
               src={assetUrl(profile.awardPhotoUrl)}
               alt="Nitin Mishra receiving the Performance of the Year award"
-              width="768"
-              height="768"
+              width="268"
+              height="468"
               loading="lazy"
             />
             <figcaption>
@@ -442,7 +442,7 @@ function Footer() {
     <footer className="site-footer">
       <div className="shell footer-inner">
         <Mark />
-        <span>Thoughtfully built. Ready for what&apos;s next.</span>
+        <span>© 2026 Nitin Mishra. All rights reserved. | Thoughtfully built. Ready for what&apos;s next.</span>
         <a href="#home">BACK TO TOP ↑</a>
       </div>
     </footer>

@@ -24,9 +24,21 @@ Create an optimized frontend build with `npm run build`. Run the API independent
 
 ## Deploy to Vercel
 
-Import the repository into Vercel with the **repository root** as the Root Directory. The checked-in `vercel.json` builds the React app to `client/dist`, deploys the `api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `server/uploads`.
+Import the repository into Vercel with the **repository root** as the Root Directory (do not select `client`). The checked-in `vercel.json` builds the React app into the root `dist` directory, deploys the `api/` serverless functions, and routes `/uploads/:filename` to the upload function. The serverless upload function includes the files in `server/uploads`.
 
 After deploying, the API endpoint is `https://<your-deployment>.vercel.app/api/portfolio` (note the final `o` in `portfolio`); the health endpoint is `/api/health`. No separate Express server or `VITE_API_URL` is needed when frontend and API are deployed to this same Vercel domain.
+
+### Fix: "No Output Directory named dist found"
+
+In Vercel **Project Settings → Build and Deployment**, configure:
+
+- **Root Directory:** repository root (`.`); leave **Include files outside the Root Directory** disabled.
+- **Framework Preset:** Vite, or Other if you want to use the checked-in build settings directly.
+- **Build Command:** `npm run build:vercel`
+- **Output Directory:** `dist`
+- **Install Command:** `npm install`
+
+The Vercel-specific build script writes the frontend into the root `dist` directory, matching Vercel's Output Directory setting. Do not set the Root Directory to `client`: Vercel would not include the root-level `api/` functions or `vercel.json`. If Vercel Project Settings override the build command or output directory, change them to `npm run build:vercel` and `dist`, or disable the overrides so Vercel can use `vercel.json`. Verify that the latest deployment's Git commit contains the root-level `vercel.json`, then redeploy.
 
 ## API
 
